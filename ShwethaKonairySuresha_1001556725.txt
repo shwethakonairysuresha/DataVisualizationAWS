@@ -1,0 +1,323 @@
+
+Name:Shwetha Koaniry Suresha
+Last 4 digits ID:6725
+Cloud IP address:18.218.146.64
+Computer IP Address:10.182.60.215
+CSE 6331, Cloud Computing					
+
+
+Quiz Q4, Spring 2018   (c) DL, UTA, 2018
+
+
+  C&P means cut and paste only those relevant lines from your program(s) into this quiz.
+
+  Summary: initial bottom question 1, rename this as described in question 3, show functionality 
+    through web interface of cloud implementation. Read (entire) quiz before writing.
+
+ 1.  I understand that I am on my honor during this quiz, I will not collaborate, use 
+     non-allowed sources, and I will not discuss or share this quiz with anyone for the next 
+     4 hours.
+     You MAY: use Google to search, use previous source code, 
+     YOU MAY NOT use:
+     Email, Facebook, Hangouts, IM, chats, Skype or ANY other human connection.
+
+     This is a timed test. Late tests will have points deducted for being late.
+     Very late tests will not be graded.
+
+     When you are complete, with any part, please raise your hand, so we may visually inspect that part.
+
+     The second part of the test, you should electronically submit, you will need to copy and paste 
+     only those lines of code to implement that part of the test, usually a few (two to eight) lines of code. 
+     Place it immediately after the question.
+
+     Submit this Quiz (renamed) with code cut and pasted, ONLY text. DO NOT submit zips, binaries, libraries,
+     or anything other than text.
+
+     When any parts(questions) are complete, submit this test, you may make multiple submissions.
+
+     If you have computer, or other, problems, please raise your hand immediately.
+
+     If you understand and agree, please initial here:
+     SKS(Shwetha Konairy Suresha)
+
+ 2. Get files from this same folder.
+   
+ 3. Name your program with your name and last digits of your ID.
+
+ 4. The cloud provider is AWS (Amazon Web Services), all functionality possible should be implemented on that provider.
+    (Of course, displaying web pages through a browser and the user interface is "local")
+
+Show and submit code for the following:
+
+ 5. Show a web page and interface (which resides on the cloud provider) with your name and 
+    student ID in large font at the top of every web page displayed (for this quiz)
+--> show when showing part 8
+code:<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cloud Assignment3 AWS</title>
+</head>
+<body>
+<div class="container">
+
+    <h2>Shwetha Konairy Suresha &nbsp 1001556725</h2>
+
+    <label><b>Upload CSV File:</b></label>
+    <form id="formUpload" action="/csv_upload" enctype="multipart/form-data" method="post">
+    <p class='description'></p> Please upload your csv file here:<br><input type = "file" name="file_upload"><input type="submit" value="Submit" id="submit_file"><br><br>
+    </form>
+
+    <label><b>Execute query with SQL</b></label>
+    <form id="sqlform" action="/sqlexecute" method="POST">
+       Limit: <input type="text" name="limit" value=" ">
+        <br> Time:{{ rdstime1 }}<br>
+        <input type="submit" name="execute" value="execute" ><br><br>
+    </form>
+    <label><b>SQLEXECUTE Restriction</b></label>
+    <form id="SR" action="/sqlexecuterestrict" method="POST">
+        locationSource <input type="text" name="limit" value=" ">
+	<br> Time To Execute:{{ rdstime2 }}<br>
+        <input type="submit" name="execute" value="execute" ><br><br>
+    </form>
+
+    <label><b>Selection Restriction</b></label>
+    <form id="SR" action="/sqlexecuterestrictlat" method="POST">
+        Longitude <input type="text" name="long" value=" ">
+        Latitude <input type="text" name="lat" value=" ">
+	<br> Time:{{ rdstime3 }}<br>
+        <input type="submit" name="execute" value="execute" ><br><br>
+    </form>	
+
+    <label><b>Modify data</b></label>
+    <form id="clean" action="/cleanexecute" method="POST">
+       Input: <input type="text" name="limit">
+	   <br> Time:{{ rdstime1 }}<br>
+       <input type="submit" name="execute" value="execute" ><br><br>
+    </form>
+	  <table border="2px">
+                <tr><td>Institute Details</td></tr>
+                {% for obj in tableData1 %}
+                    <tr><td>{{ obj.STATE }}</td>
+			<td>{{ obj.INSTNM }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+	
+   <label><b>Execute query with Memcached</b></label>
+    <form id="memform" action="/memexecute" method="POST">
+         Limit: <input type="text" name="limit">
+        <br> Time:{{ rdstime4 }}<br>
+        <input type="submit" name="execute" value="execute" ><br><br>
+    </form>
+    <label><b>Query 1:</b></label>
+    <form id="query1form" action="/query1" method="POST">
+	     State: <input type="text" name="State">
+		 <br> CountNo:{{ answer2 }} <br>
+		 <table border="3px">
+			<tr><td>Name Of Institution</td></tr><br>
+			{% for object in answer1 %}
+				<tr><td>{{ object.INSTNM }}</td></tr>
+			{% endfor %}
+		 </table>
+         <input type="submit" name="execute" value="execute" ><br><br>
+    </form>
+	
+    <label><b>Query 2:</b></label>
+    <form id="query2form" action="/query2" method="POST">
+	     State: <input type="text" name="State">
+		 <br> CountNo:{{ answer4 }} <br>
+		 <table border="3px">
+			<tr><td>ALIAS NAME</td></tr><br>
+			{% for object in answer3 %}
+				<tr><td>{{ object.INSTNM }}</td></tr>
+			{% endfor %}
+		 </table>
+        <input type="submit" name="execute" value="execute" ><br><br>
+    </form>
+	
+    <label><b>Query 3:</b></label>
+    <form id="query3form" action="/query3" method="POST">
+        Value1: <input type="text" name="val1" >
+        Value2: <input type="text" name="val2" >
+        <input type="submit" name="execute" value="execute" ><br><br>
+    </form>
+	<table border="2px">
+                <tr><td>Id</td></tr>
+                {% for obj in res %}
+                    <tr><td>{{obj.id}}</td>
+                </tr>
+                {% endfor %}
+    </table>
+        <br> <br>
+		
+        <label><b>Query 4:</b></label>
+    <form id="query4form" action="/query4" method="POST">
+         Value1: <input type="text" name="val1" value=" ">
+         Value2: <input type="text" name="val2" value=" ">
+        Value3: <input type="text" name="val3" value=" ">
+        <input type="submit" name="execute" value="execute" ><br><br>
+
+    </form>
+
+        <label><b>Query 5:</b></label>
+    <form id="query5form" action="/query5" method="POST">
+      Value1: <input type="text" name="val1" value=" ">
+         Value2: <input type="text" name="val2" value=" ">
+        <input type="submit" name="execute" value="execute" ><br><br>
+    </form>
+
+</div>
+</body>
+</body>
+</html>
+ 6. Upload the .csv data files to cloud service. Once they are in the cloud service you will import them into
+    SQL tables, created and indexed as necessary (for the following parts). 
+    The Education data set contains the name of the institution, the state, the average entering student SAT 
+    and the average debt of students graduating.
+    Note some of these attributes may be unknown (NULL) or not given for privacy reasons.
+    The Starbucks data set are most of the Starbucks in the world, with a city, state, country, latitude, longitude,
+    and time zone (minutes from GMT (Z-time)). Some names will not be in English (Latin) fonts.
+    If you wish, you may "normalize" all latitude, longitude values by adding 180.
+--> show when showing part 8
+code:@app.route("/csv_upload", methods = ['POST'])
+def csv_upload():#For uploading the file
+	#global file_name
+	csv_file = request.files['file_upload']	
+	file_name=csv_file.filename
+	session['file_name']=file_name
+	print "file recieved"
+	filename = secure_filename(csv_file.filename)
+	csv_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+	drop_query="drop table IF EXISTS "+ file_name[:-4]
+	with Conn.cursor() as curs:
+		curs.execute(drop_query)
+		Conn.commit()
+	print "dropped"
+	column_name="("
+	abs_filename=UPLOAD_FOLDER+file_name
+	with open(abs_filename, 'r') as f:
+		reader = csv.reader(f)
+		for row in reader:
+			line=row
+			break
+	for i in line:
+		column_name+=i+" VARCHAR(50),"
+	query="Create table if not exists " + file_name[:-4]+column_name+" sr_no INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(sr_no));"
+	print query
+	with Conn.cursor() as curs:
+		curs.execute(query)
+		Conn.commit()
+	curs.close()
+	print "successfully created"
+	
+	insert_str="""LOAD DATA LOCAL INFILE '"""+abs_filename+ """'INTO TABLE """+ file_name[:-4] +""" FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;"""
+	print (insert_str)
+	with Conn.cursor() as curs:
+		curs.execute(insert_str)
+		Conn.commit()
+	print "successfully loaded"
+	return render_template("filehandle.html")
+
+@app.route('/sqlexecute', methods=['POST'])
+def sqlexecute():
+    	limit = request.form['limit']
+    	starttime = time.time()
+    	print(starttime)
+    	with Conn.cursor() as curs:
+        	curs.execute(query + limit)
+	        Conn.commit()
+    	curs.close()        
+    	endtime = time.time()
+    	print('endtime')
+    	totalsqltime = endtime - starttime
+    	print(totalsqltime)
+    	return render_template('filehandle.html', rdstime1=totalsqltime)
+
+You will create a web interface to query and assess time used for user specified queries, similar to your assignment.
+
+ 7. Create SQL tables with the information in both datasets.
+-> put code here
+code:abs_filename=UPLOAD_FOLDER+file_name
+	with open(abs_filename, 'r') as f:
+		reader = csv.reader(f)
+		for row in reader:
+			line=row
+			break
+	for i in line:
+		column_name+=i+" VARCHAR(50),"
+	query="Create table if not exists " + file_name[:-4]+column_name+" sr_no INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(sr_no));"
+	print query
+	with Conn.cursor() as curs:
+		curs.execute(query)
+		Conn.commit()
+	curs.close()
+	print "successfully created"
+	
+	insert_str="""LOAD DATA LOCAL INFILE '"""+abs_filename+ """'INTO TABLE """+ file_name[:-4] +""" FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;"""
+	print (insert_str)
+	with Conn.cursor() as curs:
+		curs.execute(insert_str)
+		Conn.commit()
+	print "successfully loaded"
+	return render_template("filehandle.html")
+
+ 8. Create a web interface to allow a user to list all Starbucks at a specified latitude, longitude, 
+    (within one degree), and show time used to perform that query.
+-> show us, put code here
+code:@app.route('/query3', methods=['POST'])
+def query3():
+    x = request.form['val1']
+    y = request.form['val2']
+    w = float(x)
+    z = float(y)
+    temp1 = w + 1
+    temp2 = z + 1
+    longitude = str(temp1)
+    latitude  = str(temp2)
+    locquery = "Select Starbucks.Id from Starbucks where Longitude between'"+ x +"' and '"+longitude+"' and Latitude between'"+ y +"'and'" +latitude+"';"
+    print("hiii")
+    print (locquery)
+    starttime = time.time()
+    #print(starttime)
+    with Conn.cursor() as curs:
+        curs.execute(locquery)
+        result = curs.fetchall()
+        for el in result:
+            print(el['Id'])
+        Conn.commit()
+        curs.close()
+        endtime = time.time()
+        #print('endtime')
+        totalsqltime = endtime - starttime
+        #print(totalsqltime)
+        return render_template('filehandle.html', res=result)
+
+ 9. Create a web interface to allow a user to list all Starbucks at a user specified range of latitude, longitude, 
+    (for example, latitude from -120 to -90, longitude from 40 to 50).
+    And show time used to perform that query.
+-> show us, put code here
+
+ 10. Create a web interface to allow a user to give a SAT range (for example, SAT from 800 to 850),
+     and a city name and show the first 3 institution names that match and show 8 Starbucks in those
+     cities where those institutions are located. (for example for 1000 to 1200 SAT, 
+     and city Cincinnati there are 3 universities and many Starbucks (list 8), for SAT 1300 to 1400 
+     in the same city there are none). And show the time used to perform that query.
+-> show us, put code here
+
+ 11. Create a web interface to allow a user to give a range of latitude, longitude and using the Starbucks
+     data find all cities in that range, and using a user specified country code list 
+     (for example, latitude from -160 to -150, longitude from 18 to 24, code "US")
+     list all only institution names and SAT scores for each within that area.
+     And show time used to perform that query.
+-> show us, put code here
+
+ Bonus: Repeat part 11, using a memory caching mechanism (such as memcache or Redis), allowing a user to
+        give the number of times to query, allow caching to be enabled or not (turned off)
+        and show results, and show time used to perform that query.
+-> show us, put code here
+
+ 12. When complete, return (send) this quiz
+     If you finish early, send this immediately, otherwise send between
+     the end of class and no more than 1 minute after that.
+

@@ -1,0 +1,17 @@
+http://nvd3.org/examples/multiBarHorizontal.html
+file:///C:/Users/darsh/Downloads/nvd3-master/nvd3-master/examples/multiBarHorizontalChart.html
+https://github.com/novus/nvd3
+http://bl.ocks.org/kiranml1/6872226
+https://github.com/kthotav/D3Visualizations/tree/master/GDP_Bar_Chart
+https://stackoverflow.com/questions/13917046/how-to-use-this-data-with-d3js-scatter-plot
+https://stackoverflow.com/questions/20975862/d3-js-line-chart-with-negative-numbers
+https://stackoverflow.com/questions/17351016/set-up-python-simplehttpserver-on-windows
+https://stackoverflow.com/questions/10752055/cross-origin-requests-are-only-supported-for-http-error-when-loading-a-local
+https://cdnjs.com/libraries/nvd3
+https://stackoverflow.com/questions/16232820/is-it-possible-to-load-csv-data-to-nvd3-library
+https://www.youtube.com/watch?v=EId9MrEVzW8
+https://bl.ocks.org/d3noob/402dd382a51a4f6eea487f9a35566de0
+https://gis.stackexchange.com/questions/72458/export-list-of-values-into-csv-or-txt-file
+https://stackoverflow.com/questions/34599900/mysql-export-to-csv-file-as-utf-8-via-python-script
+https://www.w3schools.com/html/html_css.asp
+https://www.google.com/search?rlz=1C1MKDC_enUS771US774&ei=76ifWp-LE8mYtgXR8oyIDg&q=nvd3+cdn&oq=nvd3&gs_l=psy-ab.3.0.35i39k1l2j0i20i264k1j0l7.3251.4388.0.6590.4.4.0.0.0.0.86.270.4.4.0....0...1c.1.64.psy-ab..0.4.269...0i131k1j0i131i20i264k1j0i67k1j0i10k1.0.8RdyzleMNDw
